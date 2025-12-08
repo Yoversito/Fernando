@@ -1,0 +1,289 @@
+// Variables mejoradas
+$primary-color: #6f42c1;
+$secondary-color: #f8f9fa;
+$table-header-color: #343a40;
+$border-color: #dee2e6;
+$success-color: #28a745;
+$hover-color: #f8f9fa;
+
+// Estilos Globales
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    margin-top: 20px;
+}
+
+h1 {
+    color: $primary-color;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}
+
+// Estilos para la tabla mejorada
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    
+    .thead-dark {
+        background: linear-gradient(135deg, $table-header-color 0%, #495057 100%);
+        
+        th {
+            color: white;
+            font-weight: 600;
+            padding: 12px 8px;
+            border: 1px solid darken($table-header-color, 5%);
+            text-align: center;
+            white-space: nowrap;
+        }
+    }
+
+    th, td {
+        padding: 10px 8px;
+        text-align: center;
+        border: 1px solid $border-color;
+        transition: background-color 0.2s ease;
+    }
+
+    tbody {
+        tr {
+            &:nth-child(even) {
+                background-color: lighten($secondary-color, 1%);
+            }
+            
+            &:hover {
+                background-color: lighten($primary-color, 45%);
+                
+                td {
+                    background-color: lighten($primary-color, 45%);
+                }
+            }
+        }
+        
+        td {
+            // Estilos para celdas con montos
+            &:contains('S/.') {
+                font-weight: 500;
+                color: #2c3e50;
+            }
+        }
+    }
+
+    tfoot {
+        background-color: lighten($secondary-color, 1%);
+        
+        tr {
+            border-top: 2px solid $primary-color;
+            
+            &:first-child {
+                border-top: 2px solid $table-header-color;
+            }
+            
+            td {
+                font-weight: 600;
+                font-size: 1.05em;
+                
+                &#totalBruto,
+                &#totalNeto,
+                &#totalInversion {
+                    background: linear-gradient(135deg, $success-color 0%, #20c997 100%);
+                    color: white;
+                    border-radius: 4px;
+                    margin: 1px;
+                }
+            }
+        }
+    }
+}
+
+// Contenedor responsive mejorado
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; // Mejor scroll en iOS
+    border-radius: 8px;
+    border: 1px solid $border-color;
+    
+    &::-webkit-scrollbar {
+        height: 8px;
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 4px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background: $primary-color;
+        border-radius: 4px;
+        
+        &:hover {
+            background: darken($primary-color, 10%);
+        }
+    }
+}
+
+// Media Queries mejoradas para responsividad
+@media (max-width: 1200px) {
+    .container {
+        padding: 20px;
+    }
+    
+    .table {
+        th, td {
+            padding: 8px 6px;
+            font-size: 0.95em;
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        padding: 15px;
+        margin: 10px;
+    }
+    
+    h1 {
+        font-size: 1.75rem;
+    }
+    
+    .table {
+        th, td {
+            padding: 8px 4px;
+            font-size: 0.9em;
+        }
+        
+        .thead-dark th {
+            padding: 10px 4px;
+            font-size: 0.85em;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+        background: #f8f9fa;
+    }
+    
+    .container {
+        padding: 12px;
+        border-radius: 8px;
+        margin: 5px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .table {
+        font-size: 0.85em;
+        
+        th, td {
+            padding: 6px 3px;
+            white-space: nowrap;
+        }
+        
+        .thead-dark th {
+            padding: 8px 3px;
+            font-size: 0.8em;
+        }
+        
+        tfoot td {
+            font-size: 0.9em;
+            padding: 8px 3px;
+        }
+    }
+}
+
+@media (max-width: 576px) and (orientation: landscape) {
+    body {
+        padding: 5px;
+    }
+    
+    .container {
+        padding: 8px;
+        margin: 2px;
+    }
+    
+    h1 {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .table {
+        font-size: 0.75em;
+        
+        th, td {
+            padding: 4px 2px;
+            line-height: 1.2;
+        }
+        
+        .thead-dark th {
+            padding: 6px 2px;
+            font-size: 0.75em;
+        }
+        
+        tfoot td {
+            font-size: 0.8em;
+            padding: 6px 2px;
+        }
+    }
+    
+    // Para pantallas muy pequeñas en horizontal
+    .table-responsive {
+        border: none;
+        
+        &::-webkit-scrollbar {
+            height: 6px;
+        }
+    }
+}
+
+// Breakpoint específico para tablets en landscape
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .container {
+        padding: 15px;
+    }
+    
+    .table {
+        th, td {
+            padding: 8px 4px;
+            font-size: 0.85em;
+        }
+    }
+}
+
+// Mejoras para impresión
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+    
+    .container {
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
+    }
+    
+    .table {
+        border: 1px solid #000;
+        
+        th, td {
+            border-color: #000;
+        }
+    }
+}
