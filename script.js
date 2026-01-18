@@ -1,8 +1,8 @@
 // Datos de los productos con precios unitarios corregidos
 const productos = [
-    { nombre: 'Desodorante Axe', cantidad: 12, precioCompra: 9.90, precioVenta: 16, vendido: 2 },   // YA ESTÁ
-    { nombre: 'Desodorante Dove F.', cantidad: 12, precioCompra: 11.50, precioVenta: 16, vendido: 1 },  // YA ESTÁ
-    { nombre: 'Desodorante Dove M.', cantidad: 12, precioCompra: 11.50, precioVenta: 16, vendido: 2 },  // YA ESTÁ
+    { nombre: 'Desodorante Axe', cantidad: 12, precioCompra: 9.90, precioVenta: 16, vendido: 5 },   // YA ESTÁ
+    { nombre: 'Desodorante Dove F.', cantidad: 12, precioCompra: 11.50, precioVenta: 16, vendido: 3 },  // YA ESTÁ
+    { nombre: 'Desodorante Dove M.', cantidad: 12, precioCompra: 11.50, precioVenta: 16, vendido: 0 },  // YA ESTÁ
     { nombre: 'Desodorante Nivea', cantidad: 12, precioCompra: 10.50, precioVenta: 16, vendido: 0 }, // YA ESTÁ
     { nombre: 'Desodorante Rexona', cantidad: 12, precioCompra: 10.50, precioVenta: 15, vendido: 0 }, // YA ESTÁ
     { nombre: 'Shampoo Hys 375 ml', cantidad: 12, precioCompra: 15.50, precioVenta: 19, vendido: 3 }, // YA EST
@@ -13,15 +13,15 @@ const productos = [
     { nombre: 'Shampoo Clear', cantidad: 12, precioCompra: 13.50, precioVenta: 18, vendido: 1 },  // YA EST
     { nombre: 'Shampoo Amarás', cantidad: 6, precioCompra: 13.50, precioVenta: 16, vendido: 2 },  // YA EST
     { nombre: 'Jabón Protex', cantidad: 12, precioCompra: 3.38, precioVenta: 4.50, vendido: 3 }, // YA EST
-    { nombre: 'Jabón Palmolive', cantidad: 12, precioCompra: 3.04, precioVenta: 4.50, vendido: 1 }, // YA EST
+    { nombre: 'Jabón Palmolive', cantidad: 12, precioCompra: 3.04, precioVenta: 4.50, vendido: 2 }, // YA EST
     { nombre: 'Jabón Moncler', cantidad: 12, precioCompra: 3.71, precioVenta: 4.50, vendido: 1 }, // YA EST
     { nombre: 'Jabón Camay', cantidad: 12, precioCompra: 2.88, precioVenta: 4, vendido: 0 }, // YA EST
     { nombre: 'Jabón Dove', cantidad: 12, precioCompra: 3.38, precioVenta: 4.50, vendido: 0 }, // YA EST
-    { nombre: 'Alcohol Pequeño 70°', cantidad: 24, precioCompra: 1.04, precioVenta: 2.50, vendido: 5 }, // YA EST
+    { nombre: 'Alcohol Pequeño 70°', cantidad: 24, precioCompra: 1.04, precioVenta: 2.50, vendido: 8 }, // YA EST
     { nombre: 'Alcohol Pequeño 96°', cantidad: 24, precioCompra: 1.13, precioVenta: 2.50, vendido: 1 }, // YA EST
     { nombre: 'Agua Azahar', cantidad: 12, precioCompra: 0.88, precioVenta: 2, vendido: 0 }, // YA EST
     { nombre: 'Agua Oxigenada', cantidad: 12, precioCompra: 0.88, precioVenta: 2, vendido: 2 }, // YA EST
-    { nombre: 'Vinagre Tipo Bully', cantidad: 24, precioCompra: 1.13, precioVenta: 2, vendido: 3 }, // YA EST
+    { nombre: 'Vinagre Tipo Bully', cantidad: 24, precioCompra: 1.13, precioVenta: 2, vendido: 5 }, // YA EST
     { nombre: 'Aceite de Coco', cantidad: 24, precioCompra: 0.96, precioVenta: 2, vendido: 4 }, // YA EST
     { nombre: 'Violeta', cantidad: 24, precioCompra: 0.96, precioVenta: 2, vendido: 1 }, // YA EST
     { nombre: 'Aceite Rosado', cantidad: 12, precioCompra: 1.04, precioVenta: 2.50, vendido: 0 }, // YA EST
