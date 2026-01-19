@@ -1,289 +1,567 @@
-// Variables mejoradas
+// Variables de color
 $primary-color: #6f42c1;
 $secondary-color: #f8f9fa;
 $table-header-color: #343a40;
 $border-color: #dee2e6;
 $success-color: #28a745;
-$hover-color: #f8f9fa;
+$warning-color: #ffc107;
+$danger-color: #dc3545;
+$info-color: #17a2b8;
+
+// Colores para socios
+$fernando-color: #3498db;
+$yover-color: #f39c12;
+$advances-color: #9b59b6;
+$summary-color: #2ecc71;
+
+// Gradientes
+@mixin gradient-primary {
+  background: linear-gradient(135deg, $primary-color 0%, #8e44ad 100%);
+}
+
+@mixin gradient-fernando {
+  background: linear-gradient(135deg, $fernando-color 0%, #2980b9 100%);
+}
+
+@mixin gradient-yover {
+  background: linear-gradient(135deg, $yover-color 0%, #e67e22 100%);
+}
+
+@mixin gradient-advances {
+  background: linear-gradient(135deg, $advances-color 0%, #8e44ad 100%);
+}
+
+@mixin gradient-summary {
+  background: linear-gradient(135deg, $summary-color 0%, #27ae60 100%);
+}
+
+// Animaciones
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 // Estilos Globales
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    min-height: 100vh;
-    margin: 0;
-    padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  animation: fadeIn 0.5s ease-out;
 }
 
-.container {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 25px;
-    margin-top: 20px;
-}
-
-h1 {
-    color: $primary-color;
+// Header
+.app-header {
+  @include gradient-primary;
+  color: white;
+  padding: 1.5rem 0;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  
+  .header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    font-size: 2rem;
-}
-
-// Estilos para la tabla mejorada
-.table {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
     
-    .thead-dark {
-        background: linear-gradient(135deg, $table-header-color 0%, #495057 100%);
-        
-        th {
-            color: white;
-            font-weight: 600;
-            padding: 12px 8px;
-            border: 1px solid darken($table-header-color, 5%);
-            text-align: center;
-            white-space: nowrap;
-        }
+    @media (min-width: 768px) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
     }
-
-    th, td {
-        padding: 10px 8px;
-        text-align: center;
-        border: 1px solid $border-color;
-        transition: background-color 0.2s ease;
+  }
+  
+  .main-title {
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    
+    @media (min-width: 768px) {
+      font-size: 2rem;
+      margin-bottom: 0;
     }
-
-    tbody {
-        tr {
-            &:nth-child(even) {
-                background-color: lighten($secondary-color, 1%);
-            }
-            
-            &:hover {
-                background-color: lighten($primary-color, 45%);
-                
-                td {
-                    background-color: lighten($primary-color, 45%);
-                }
-            }
-        }
-        
-        td {
-            // Estilos para celdas con montos
-            &:contains('S/.') {
-                font-weight: 500;
-                color: #2c3e50;
-            }
-        }
+  }
+  
+  .last-update {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+    
+    &.animate-pulse {
+      animation: pulse 2s infinite;
     }
-
-    tfoot {
-        background-color: lighten($secondary-color, 1%);
-        
-        tr {
-            border-top: 2px solid $primary-color;
-            
-            &:first-child {
-                border-top: 2px solid $table-header-color;
-            }
-            
-            td {
-                font-weight: 600;
-                font-size: 1.05em;
-                
-                &#totalBruto,
-                &#totalNeto,
-                &#totalInversion {
-                    background: linear-gradient(135deg, $success-color 0%, #20c997 100%);
-                    color: white;
-                    border-radius: 4px;
-                    margin: 1px;
-                }
-            }
-        }
-    }
+  }
 }
 
-// Contenedor responsive mejorado
-.table-responsive {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch; // Mejor scroll en iOS
-    border-radius: 8px;
-    border: 1px solid $border-color;
+// Contenido principal
+.main-content {
+  padding-bottom: 2rem;
+}
+
+// Cards
+.card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  &-header {
+    border-bottom: none;
+    padding: 1.2rem 1.5rem;
+    color: white;
+    font-weight: 600;
+    
+    &.bg-gradient-primary {
+      @include gradient-primary;
+    }
+    
+    &.bg-gradient-fernando {
+      @include gradient-fernando;
+    }
+    
+    &.bg-gradient-yover {
+      @include gradient-yover;
+    }
+    
+    &.bg-gradient-advances {
+      @include gradient-advances;
+    }
+    
+    &.bg-gradient-summary {
+      @include gradient-summary;
+    }
+    
+    .card-title {
+      font-size: 1.3rem;
+      margin: 0;
+    }
+  }
+  
+  &-body {
+    padding: 1.5rem;
+  }
+}
+
+// Tabla mejorada
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  
+  th {
+    font-weight: 600;
+    white-space: nowrap;
+    background: $table-header-color;
+    color: white;
+    
+    &:first-child {
+      border-top-left-radius: 8px;
+    }
+    
+    &:last-child {
+      border-top-right-radius: 8px;
+    }
+  }
+  
+  td, th {
+    padding: 12px 15px;
+    vertical-align: middle;
+    border: none;
+  }
+  
+  tbody {
+    tr {
+      transition: background-color 0.2s ease;
+      
+      &:hover {
+        background-color: rgba($primary-color, 0.05);
+      }
+      
+      &:last-child {
+        td {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+  
+  tfoot {
+    background-color: lighten($secondary-color, 2%);
+    
+    tr {
+      border-top: 2px solid $primary-color;
+      
+      &:first-child {
+        border-top: 2px solid $table-header-color;
+      }
+      
+      td {
+        font-weight: 600;
+        font-size: 1.05em;
+      }
+    }
+  }
+}
+
+// Distribución de ganancias
+.distribution-item {
+  background: white;
+  border-radius: 10px;
+  padding: 1.2rem;
+  height: 100%;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  
+  &.fernando {
+    border-color: rgba($fernando-color, 0.3);
+    
+    &:hover {
+      border-color: $fernando-color;
+      box-shadow: 0 5px 15px rgba($fernando-color, 0.1);
+    }
+  }
+  
+  &.yover {
+    border-color: rgba($yover-color, 0.3);
+    
+    &:hover {
+      border-color: $yover-color;
+      box-shadow: 0 5px 15px rgba($yover-color, 0.1);
+    }
+  }
+  
+  .distribution-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    
+    i {
+      font-size: 1.8rem;
+      margin-right: 0.8rem;
+    }
+    
+    h4 {
+      font-size: 1.3rem;
+      margin: 0;
+      flex-grow: 1;
+    }
+    
+    .badge {
+      font-size: 0.9rem;
+      padding: 0.4rem 0.8rem;
+    }
+  }
+  
+  .distribution-values {
+    .value-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.8rem;
+      
+      .label {
+        color: #666;
+        font-weight: 500;
+      }
+      
+      .value {
+        font-weight: 600;
+        font-size: 1.1em;
+      }
+      
+      &.total {
+        margin-top: 1rem;
+        padding-top: 0.8rem;
+        border-top: 2px dashed rgba(0, 0, 0, 0.1);
+        
+        .value {
+          font-size: 1.3em;
+        }
+      }
+    }
+  }
+}
+
+// Control de adelantos
+.advances-control {
+  .input-group {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .advances-list {
+    .list-group-item {
+      border: none;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 0.8rem 1rem;
+      margin-bottom: 0.5rem;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        background-color: rgba($primary-color, 0.05);
+        transform: translateX(5px);
+      }
+      
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+  
+  .advances-summary {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 10px;
+    padding: 1rem;
+    
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      
+      .label {
+        font-weight: 500;
+        color: #666;
+      }
+      
+      .value {
+        font-weight: 600;
+        font-size: 1.1em;
+      }
+      
+      &.total {
+        margin-top: 0.8rem;
+        padding-top: 0.8rem;
+        border-top: 2px solid rgba(0, 0, 0, 0.2);
+        
+        .value {
+          font-size: 1.3em;
+        }
+      }
+    }
+  }
+}
+
+// Resumen boxes
+.summary-box {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  height: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  }
+  
+  .icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: $primary-color;
+  }
+  
+  .content {
+    .label {
+      display: block;
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .value {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: $table-header-color;
+    }
+  }
+}
+
+// Footer
+.app-footer {
+  background: $table-header-color;
+  color: white;
+  padding: 1.5rem 0;
+  margin-top: 3rem;
+  text-align: center;
+  
+  a, .btn-link {
+    color: white;
+    text-decoration: none;
+    
+    &:hover {
+      color: lighten($primary-color, 20%);
+    }
+  }
+}
+
+// Responsividad mejorada
+@media (max-width: 768px) {
+  .app-header {
+    .main-title {
+      font-size: 1.4rem;
+    }
+    
+    .last-update {
+      font-size: 0.8rem;
+    }
+  }
+  
+  .card {
+    margin-bottom: 1rem;
+    
+    &-header {
+      padding: 1rem;
+      
+      .card-title {
+        font-size: 1.1rem;
+      }
+    }
+    
+    &-body {
+      padding: 1rem;
+    }
+  }
+  
+  .table {
+    font-size: 0.85rem;
+    
+    td, th {
+      padding: 8px 10px;
+    }
+  }
+  
+  .distribution-item {
+    margin-bottom: 1rem;
+  }
+  
+  .summary-box {
+    margin-bottom: 1rem;
+    
+    .value {
+      font-size: 1.3rem;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  body {
+    padding: 0;
+  }
+  
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .app-header {
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+    
+    .main-title {
+      font-size: 1.2rem;
+    }
+  }
+  
+  .table-responsive {
+    margin: 0 -10px;
+    padding: 0 10px;
     
     &::-webkit-scrollbar {
-        height: 8px;
+      height: 4px;
     }
-    
-    &::-webkit-scrollbar-track {
-        background: #f1f1f1;
-        border-radius: 4px;
-    }
-    
-    &::-webkit-scrollbar-thumb {
-        background: $primary-color;
-        border-radius: 4px;
-        
-        &:hover {
-            background: darken($primary-color, 10%);
-        }
-    }
+  }
 }
 
-// Media Queries mejoradas para responsividad
-@media (max-width: 1200px) {
-    .container {
-        padding: 20px;
-    }
-    
-    .table {
-        th, td {
-            padding: 8px 6px;
-            font-size: 0.95em;
-        }
-    }
-}
-
-@media (max-width: 992px) {
-    .container {
-        padding: 15px;
-        margin: 10px;
-    }
-    
-    h1 {
-        font-size: 1.75rem;
-    }
-    
-    .table {
-        th, td {
-            padding: 8px 4px;
-            font-size: 0.9em;
-        }
-        
-        .thead-dark th {
-            padding: 10px 4px;
-            font-size: 0.85em;
-        }
-    }
-}
-
-@media (max-width: 768px) {
-    body {
-        padding: 10px;
-        background: #f8f9fa;
-    }
-    
-    .container {
-        padding: 12px;
-        border-radius: 8px;
-        margin: 5px;
-    }
-    
-    h1 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-    }
-    
-    .table {
-        font-size: 0.85em;
-        
-        th, td {
-            padding: 6px 3px;
-            white-space: nowrap;
-        }
-        
-        .thead-dark th {
-            padding: 8px 3px;
-            font-size: 0.8em;
-        }
-        
-        tfoot td {
-            font-size: 0.9em;
-            padding: 8px 3px;
-        }
-    }
-}
-
-@media (max-width: 576px) and (orientation: landscape) {
-    body {
-        padding: 5px;
-    }
-    
-    .container {
-        padding: 8px;
-        margin: 2px;
-    }
-    
-    h1 {
-        font-size: 1.3rem;
-        margin-bottom: 0.8rem;
-    }
-    
-    .table {
-        font-size: 0.75em;
-        
-        th, td {
-            padding: 4px 2px;
-            line-height: 1.2;
-        }
-        
-        .thead-dark th {
-            padding: 6px 2px;
-            font-size: 0.75em;
-        }
-        
-        tfoot td {
-            font-size: 0.8em;
-            padding: 6px 2px;
-        }
-    }
-    
-    // Para pantallas muy pequeñas en horizontal
-    .table-responsive {
-        border: none;
-        
-        &::-webkit-scrollbar {
-            height: 6px;
-        }
-    }
-}
-
-// Breakpoint específico para tablets en landscape
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-    .container {
-        padding: 15px;
-    }
-    
-    .table {
-        th, td {
-            padding: 8px 4px;
-            font-size: 0.85em;
-        }
-    }
-}
-
-// Mejoras para impresión
+// Para impresión
 @media print {
-    body {
-        background: white;
-        padding: 0;
+  .app-header, .app-footer, .card-header, .btn {
+    display: none !important;
+  }
+  
+  .card {
+    border: 1px solid #000 !important;
+    box-shadow: none !important;
+  }
+  
+  body {
+    background: white !important;
+  }
+}
+
+/* styles.css - Solo actualizo lo necesario para el nuevo diseño */
+
+/* Mantengo todos tus estilos originales y solo agrego estos */
+
+.advances-info {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.advances-summary {
+    padding: 1rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.advances-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: 200px;
+}
+
+.advances-list .list-group {
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+.advances-list .list-group-item {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+}
+
+.distribution-values .value-item {
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.distribution-values .value-item.total {
+    border-bottom: 2px solid rgba(0,0,0,0.2);
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .distribution-values .value-item {
+        font-size: 0.9rem;
     }
     
-    .container {
-        box-shadow: none;
-        border-radius: 0;
-        padding: 0;
-    }
-    
-    .table {
-        border: 1px solid #000;
-        
-        th, td {
-            border-color: #000;
-        }
+    .advances-list {
+        max-height: 150px;
     }
 }

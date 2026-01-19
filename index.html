@@ -4,53 +4,267 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Control de Stock - Botica</title>
-  
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Header con efectos -->
+    <header class="app-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="main-title">
+                    <i class="fas fa-store me-2"></i>
+                    Control de Stock - Botica
+                </h1>
+                <div class="last-update animate-pulse">
+                    <i class="fas fa-clock me-1"></i>
+                    Actualizado - <span id="currentDateTime">31/12/2025 - 13:40 PM</span>
+                </div>
+            </div>
+        </div>
+    </header>
 
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Actualizado - 31/12/2025 - 13:40 PM</h1>
+    <main class="main-content">
+        <div class="container">
+            <!-- Tabla de productos -->
+            <div class="card shadow-lg mb-4 table-card">
+                <div class="card-header bg-gradient-primary">
+                    <h2 class="card-title mb-0">
+                        <i class="fas fa-table me-2"></i>
+                        Control de Productos
+                    </h2>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped mb-0">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th class="text-start">Producto</th>
+                                    <th class="text-center">Stock</th>
+                                    <th class="text-center">Vendido</th>
+                                    <th class="text-center">P. Compra Unit.</th> 
+                                    <th class="text-center">P. Compra Subtotal</th>      
+                                    <th class="text-center">P. Venta Unit.</th>   
+                                    <th class="text-center">Ganancia Bruta</th>     
+                                    <th class="text-center">Ganancia Neta</th>       
+                                </tr>
+                            </thead>
+                            <tbody id="productTable">
+                                <!-- Productos dinámicos -->
+                            </tbody>
+                            <tfoot class="table-secondary">
+                                <tr>
+                                    <td colspan="4" class="text-end fw-bold">Inversión Total:</td>
+                                    <td id="totalInversion" class="text-center fw-bold text-primary">0.00</td>
+                                    <td colspan="3"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6" class="text-end fw-bold">Total Ganancia Bruta:</td>
+                                    <td id="totalBruto" class="text-center fw-bold text-success">0.00</td>
+                                    <td class="text-center">-</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6" class="text-end fw-bold">Total Ganancia Neta:</td>
+                                    <td class="text-center">-</td>
+                                    <td id="totalNeto" class="text-center fw-bold text-success">0.00</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
-        <table class="table table-bordered table-striped table-responsive">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Producto</th>
-                    <th>Stock</th>
-                    <th>Vendido</th>
-                    <th>P. Compra Unit.</th> 
-                    <th>P. Compra Subtotal</th>      
-                    <th>P. Venta Unit.</th>   
-                    <th>Ganancia Bruta</th>     
-                    <th>Ganancia Neta</th>       
-                </tr>
-            </thead>
-            <tbody id="productTable">
-                <!-- Productos serán agregados aquí dinámicamente -->
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="4" class="text-right"><strong>Inversión Total:</strong></td>
-                    <td id="totalInversion" class="text-center">0.00</td>
-                    <td colspan="3"></td>
-                </tr>
-                <tr>
-                    <td colspan="6" class="text-right"><strong>Total Ganancia Bruta:</strong></td>
-                    <td id="totalBruto" class="text-center">0.00</td>
-                    <td class="text-center">-</td>
-                </tr>
-                <tr>
-                    <td colspan="6" class="text-right"><strong>Total Ganancia Neta:</strong></td>
-                    <td class="text-center">-</td>
-                    <td id="totalNeto" class="text-center">0.00</td>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
+            <!-- Distribución de ganancias - AQUÍ ES DONDE DEBERÍAN APARECER LOS RESULTADOS -->
+            <div class="row mb-4">
+                <div class="col-md-8">
+                    <div class="card shadow-lg h-100 distribution-card">
+                        <div class="card-header bg-gradient-fernando">
+                            <h3 class="card-title mb-0">
+                                <i class="fas fa-chart-pie me-2"></i>
+                                Distribución de Ganancias
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <!-- Fernando - ESTE ES EL CONTENEDOR QUE DEBE MOSTRAR LOS CÁLCULOS -->
+                                <div class="col-md-6 mb-3">
+                                    <div class="distribution-item fernando">
+                                        <div class="distribution-header">
+                                            <i class="fas fa-user-tie"></i>
+                                            <h4>Fernando</h4>
+                                            <span class="badge bg-primary">Inversionista</span>
+                                        </div>
+                                        <div class="distribution-values">
+                                            <div class="value-item">
+                                                <span class="label">Ganancia Bruta Total:</span>
+                                                <span id="fernandoBruto" class="value">S/. 0.00</span>
+                                            </div>
+                                            <div class="value-item">
+                                                <span class="label">Menos 40% para Yover:</span>
+                                                <span id="fernandoMenosYover" class="value text-danger">- S/. 0.00</span>
+                                            </div>
+                                            <div class="value-item">
+                                                <span class="label">Menos Adelantos:</span>
+                                                <span id="fernandoMenosAdelantos" class="value text-danger">- S/. 0.00</span>
+                                            </div>
+                                            <div class="value-item total">
+                                                <span class="label">Total a Recibir Fernando:</span>
+                                                <span id="fernandoTotal" class="value text-success">S/. 0.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Yover -->
+                                <div class="col-md-6 mb-3">
+                                    <div class="distribution-item yover">
+                                        <div class="distribution-header">
+                                            <i class="fas fa-user"></i>
+                                            <h4>Yover</h4>
+                                            <span class="badge bg-warning">40% Neto</span>
+                                        </div>
+                                        <div class="distribution-values">
+                                            <div class="value-item">
+                                                <span class="label">Ganancia Neta Total:</span>
+                                                <span id="gananciaNetaTotal" class="value">S/. 0.00</span>
+                                            </div>
+                                            <div class="value-item">
+                                                <span class="label">40% de Ganancia Neta:</span>
+                                                <span id="yoverPorcentaje" class="value">S/. 0.00</span>
+                                            </div>
+                                            <div class="value-item total">
+                                                <span class="label">Total a Recibir Yover:</span>
+                                                <span id="yoverTotal" class="value text-success">S/. 0.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Control de adelantos - ESTE ES EL OTRO CONTENEDOR QUE DEBE MOSTRAR ADELANTOS -->
+                <div class="col-md-4">
+                    <div class="card shadow-lg h-100 advances-card">
+                        <div class="card-header bg-gradient-advances">
+                            <h3 class="card-title mb-0">
+                                <i class="fas fa-hand-holding-usd me-2"></i>
+                                Adelantos a Fernando
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="advances-info">
+                                <div class="advances-summary mb-3">
+                                    <div class="summary-item">
+                                        <span class="label">Total Adelantos:</span>
+                                        <span id="totalFernandoAdvances" class="value text-danger fw-bold">S/. 0.00</span>
+                                    </div>
+                                    <small class="text-muted">Los adelantos se restan del total de Fernando</small>
+                                </div>
+                                
+                                <div class="advances-list">
+                                    <h6 class="mb-2">Historial de Adelantos:</h6>
+                                    <div id="advancesHistory" class="list-group small">
+                                        <!-- Los adelantos se mostrarán aquí -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resumen final -->
+            <div class="card shadow-lg summary-card">
+                <div class="card-header bg-gradient-summary">
+                    <h3 class="card-title mb-0">
+                        <i class="fas fa-calculator me-2"></i>
+                        Resumen Final
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <div class="summary-box">
+                                <div class="icon">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                </div>
+                                <div class="content">
+                                    <span class="label">Ganancia Bruta Total</span>
+                                    <span id="finalBruto" class="value">S/. 0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 mb-3">
+                            <div class="summary-box">
+                                <div class="icon">
+                                    <i class="fas fa-coins"></i>
+                                </div>
+                                <div class="content">
+                                    <span class="label">Ganancia Neta Total</span>
+                                    <span id="finalNeto" class="value">S/. 0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 mb-3">
+                            <div class="summary-box">
+                                <div class="icon">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <div class="content">
+                                    <span class="label">Saldo Final Fernando</span>
+                                    <span id="finalFernandoBalance" class="value text-success fw-bold">S/. 0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-3">
+                        <div class="col-md-6 mb-3">
+                            <div class="summary-box">
+                                <div class="icon">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="content">
+                                    <span class="label">Yover Recibe (40% Neto)</span>
+                                    <span id="finalYoverBalance" class="value text-success">S/. 0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="summary-box">
+                                <div class="icon">
+                                    <i class="fas fa-cash-register"></i>
+                                </div>
+                                <div class="content">
+                                    <span class="label">Total Dinero a Distribuir</span>
+                                    <span id="totalADistribuir" class="value fw-bold">S/. 0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        <div class="container">
+            <p class="mb-0">
+                Sistema de Control de Stock - 
+                <span id="currentYear">2025</span> | 
+                <i class="fas fa-sync-alt me-1"></i>
+                <button id="refreshData" class="btn btn-link p-0">Actualizar datos</button>
+            </p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
-    <!-- Vinculando Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>
