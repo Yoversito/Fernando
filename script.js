@@ -36,6 +36,7 @@ let adelantosFernando = [
     { monto: 300, fecha: "12/12/2025" },
     { monto: 8, fecha: "28/12/2025" },
     { monto: 100, fecha: "18/01/2026" },
+    { monto: 120, fecha: "27/01/2026" },
 ];
 
 // Función PRINCIPAL que calcula TODO
