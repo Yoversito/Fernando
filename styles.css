@@ -66,8 +66,7 @@ body {
   padding: 0.5rem 1rem;
   border-radius: 50px;
   font-size: 0.9rem;
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 .app-header .last-update.animate-pulse {
   animation: pulse 2s infinite;
