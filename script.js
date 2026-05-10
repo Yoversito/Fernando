@@ -1,16 +1,16 @@
 // Datos de productos CON VENTAS YA DEFINIDAS
 const productos = [
-    { nombre: 'Desodorante Axe', cantidad: 12, precioCompra: 9.90, precioVenta: 16, vendido: 8 },
+    { nombre: 'Desodorante Axe', cantidad: 12, precioCompra: 9.90, precioVenta: 16, vendido: 9 },
     { nombre: 'Desodorante Dove F.', cantidad: 12, precioCompra: 11.50, precioVenta: 16, vendido: 3 },
     { nombre: 'Desodorante Dove M.', cantidad: 12, precioCompra: 11.50, precioVenta: 16, vendido: 2 },
     { nombre: 'Desodorante Nivea', cantidad: 12, precioCompra: 10.50, precioVenta: 16, vendido: 1 },
     { nombre: 'Desodorante Rexona', cantidad: 12, precioCompra: 10.50, precioVenta: 15, vendido: 1 },
     { nombre: 'Shampoo Hys 375 ml', cantidad: 12, precioCompra: 15.50, precioVenta: 19, vendido: 9 },
     { nombre: 'Shampoo Hys 650 ml', cantidad: 6, precioCompra: 23.50, precioVenta: 27, vendido: 2 },
-    { nombre: 'Shampoo Pantene 400 ml', cantidad: 12, precioCompra: 15.50, precioVenta: 19, vendido: 5 },
+    { nombre: 'Shampoo Pantene 400 ml', cantidad: 12, precioCompra: 15.50, precioVenta: 19, vendido: 7 },
     { nombre: 'Shampoo Sedal 340 ml', cantidad: 12, precioCompra: 9.50, precioVenta: 14, vendido: 7 },
     { nombre: 'Shampoo Ego', cantidad: 12, precioCompra: 14.50, precioVenta: 19, vendido: 3 },
-    { nombre: 'Shampoo Clear', cantidad: 12, precioCompra: 13.50, precioVenta: 18, vendido: 4 },
+    { nombre: 'Shampoo Clear', cantidad: 12, precioCompra: 13.50, precioVenta: 18, vendido: 6 },
     { nombre: 'Shampoo Amarás', cantidad: 6, precioCompra: 13.50, precioVenta: 16, vendido: 6 },
     { nombre: 'Jabón Protex', cantidad: 12, precioCompra: 3.38, precioVenta: 4.50, vendido: 6 },
     { nombre: 'Jabón Palmolive', cantidad: 12, precioCompra: 3.04, precioVenta: 4.50, vendido: 2 },
@@ -26,7 +26,7 @@ const productos = [
     { nombre: 'Violeta', cantidad: 24, precioCompra: 0.96, precioVenta: 2, vendido: 8 },
     { nombre: 'Aceite Rosado', cantidad: 12, precioCompra: 1.04, precioVenta: 2.50, vendido: 2 },
     { nombre: 'Alcohol Yodado', cantidad: 12, precioCompra: 0.96, precioVenta: 1.50, vendido: 7 },
-    { nombre: 'Gel Ego', cantidad: 12, precioCompra: 3.25, precioVenta: 6, vendido: 6 },
+    { nombre: 'Gel Ego', cantidad: 12, precioCompra: 3.25, precioVenta: 6, vendido: 7 },
     { nombre: 'Ponds Pte. Pequeño', cantidad: 6, precioCompra: 11.17, precioVenta: 15, vendido: 4 },
     { nombre: 'Ponds Sachet', cantidad: 40, precioCompra: 0.93, precioVenta: 1.50, vendido: 36 },
 ];
