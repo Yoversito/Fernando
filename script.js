@@ -1,4 +1,5 @@
 // Datos de productos CON VENTAS YA DEFINIDAS
+// Datos de productos CON VENTAS YA DEFINIDAS
 const productos = [
     { nombre: 'Desodorante Axe', cantidad: 12, precioCompra: 9.90, precioVenta: 16, vendido: 10 },
     { nombre: 'Desodorante Dove F.', cantidad: 12, precioCompra: 11.50, precioVenta: 16, vendido: 7 },
