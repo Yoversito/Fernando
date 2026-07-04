@@ -47,6 +47,7 @@ let adelantosFernando = [
     { monto: 120, fecha: "21/06/2026" },
 ];
 
+
 // Función PRINCIPAL que calcula TODO
 function calcularYMostrarTodo() {
     console.log("Ejecutando cálculos...");
