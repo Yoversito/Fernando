@@ -10,8 +10,8 @@ const productos = [
     { nombre: 'Shampoo Hys 650 ml', cantidad: 6, precioCompra: 23.50, precioVenta: 27, vendido: 3 },
     { nombre: 'Shampoo Pantene 400 ml', cantidad: 12, precioCompra: 15.50, precioVenta: 19, vendido: 7 },
     { nombre: 'Shampoo Sedal 340 ml', cantidad: 12, precioCompra: 9.50, precioVenta: 14, vendido: 10 },
-    { nombre: 'Shampoo Ego', cantidad: 12, precioCompra: 14.50, precioVenta: 19, vendido: 7 },
-    { nombre: 'Shampoo Clear', cantidad: 12, precioCompra: 13.50, precioVenta: 18, vendido: 9 },
+    { nombre: 'Shampoo Ego', cantidad: 12, precioCompra: 14.50, precioVenta: 19, vendido: 8 },
+    { nombre: 'Shampoo Clear', cantidad: 12, precioCompra: 13.50, precioVenta: 18, vendido: 10 },
     { nombre: 'Shampoo Amarás', cantidad: 6, precioCompra: 13.50, precioVenta: 16, vendido: 6 },
     { nombre: 'Jabón Protex', cantidad: 12, precioCompra: 3.38, precioVenta: 4.50, vendido: 8 },
     { nombre: 'Jabón Palmolive', cantidad: 12, precioCompra: 3.04, precioVenta: 4.50, vendido: 4 },
@@ -27,7 +27,7 @@ const productos = [
     { nombre: 'Violeta', cantidad: 24, precioCompra: 0.96, precioVenta: 2, vendido: 10 },
     { nombre: 'Aceite Rosado', cantidad: 12, precioCompra: 1.04, precioVenta: 2.50, vendido: 3 },
     { nombre: 'Alcohol Yodado', cantidad: 12, precioCompra: 0.96, precioVenta: 1.50, vendido: 7 },
-    { nombre: 'Gel Ego', cantidad: 12, precioCompra: 3.25, precioVenta: 6, vendido: 8 },
+    { nombre: 'Gel Ego', cantidad: 12, precioCompra: 3.25, precioVenta: 6, vendido: 9 },
     { nombre: 'Ponds Pte. Pequeño', cantidad: 6, precioCompra: 11.17, precioVenta: 15, vendido: 6 },
     { nombre: 'Ponds Sachet', cantidad: 40, precioCompra: 0.93, precioVenta: 1.50, vendido: 40 },
 ];
@@ -46,6 +46,7 @@ let adelantosFernando = [
     { monto: 15, fecha: "22/05/2026" },
     { monto: 150, fecha: "30/05/2026" },
     { monto: 120, fecha: "21/06/2026" },
+    { monto: 250, fecha: "06/07/2026" },
 ];
 
 
