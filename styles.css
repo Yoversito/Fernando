@@ -44,10 +44,10 @@ body {
 }
 @media (min-width: 768px) {
   .app-header .header-content {
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    text-align: left;
+    text-align: center;
   }
 }
 .app-header .main-title {
@@ -80,11 +80,7 @@ body {
   border: none;
   border-radius: 15px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+  transition: none;
 }
 .card-header {
   border-bottom: none;
@@ -175,44 +171,56 @@ body {
 }
 .table tbody td:nth-child(2),
 .table tbody td:nth-child(3) {
+  font-weight: 500;
+  color: #25303b;
+}
+.table tbody td:nth-child(4) {
   background-color: #eef6ff;
   font-weight: 700;
   color: #174a7c;
 }
-.table tbody td:nth-child(6),
 .table tbody td:nth-child(7),
-.table tbody td:nth-child(8) {
+.table tbody td:nth-child(8),
+.table tbody td:nth-child(9) {
   background-color: #f3fbf5;
   font-weight: 500;
 }
-.table tbody td:nth-child(7) {
-  font-weight: 700;
-}
 .table tbody tr:hover td:nth-child(2),
 .table tbody tr:hover td:nth-child(3) {
+  background-color: #eef3f8;
+}
+.table tbody tr:hover td:nth-child(4) {
   background-color: #dcecff;
 }
-.table tbody tr:hover td:nth-child(6),
 .table tbody tr:hover td:nth-child(7),
-.table tbody tr:hover td:nth-child(8) {
+.table tbody tr:hover td:nth-child(8),
+.table tbody tr:hover td:nth-child(9) {
   background-color: #e4f6e8;
 }
 .table tbody tr.stock-empty td:nth-child(2),
 .table tbody tr.stock-empty td:nth-child(3),
-.table tbody tr.stock-empty td:nth-child(6),
+.table tbody tr.stock-empty td:nth-child(4),
 .table tbody tr.stock-empty td:nth-child(7),
-.table tbody tr.stock-empty td:nth-child(8) {
+.table tbody tr.stock-empty td:nth-child(8),
+.table tbody tr.stock-empty td:nth-child(9) {
   background-color: #f8d7da;
   color: #842029;
-  font-weight: inherit;
+  font-weight: 500;
+}
+.table tbody tr.stock-empty td.text-success {
+  color: #842029 !important;
 }
 .table tbody tr.stock-empty:hover td:nth-child(2),
 .table tbody tr.stock-empty:hover td:nth-child(3),
-.table tbody tr.stock-empty:hover td:nth-child(6),
+.table tbody tr.stock-empty:hover td:nth-child(4),
 .table tbody tr.stock-empty:hover td:nth-child(7),
-.table tbody tr.stock-empty:hover td:nth-child(8) {
+.table tbody tr.stock-empty:hover td:nth-child(8),
+.table tbody tr.stock-empty:hover td:nth-child(9) {
   background-color: #f1bfc5;
   color: #6a1a21;
+}
+.table tbody tr.stock-empty:hover td.text-success {
+  color: #6a1a21 !important;
 }
 .table tbody tr:last-child td {
   border-bottom: none;
@@ -481,11 +489,11 @@ body {
 .advances-list {
   flex-grow: 1;
   overflow-y: auto;
-  max-height: 200px;
+  max-height: 280px;
 }
 
 .advances-list .list-group {
-  max-height: 180px;
+  max-height: 260px;
   overflow-y: auto;
 }
 
@@ -511,7 +519,13 @@ body {
   .distribution-values .value-item {
     font-size: 0.9rem;
   }
+  .advances-card {
+    margin-top: 1rem;
+  }
   .advances-list {
-    max-height: 150px;
+    max-height: 320px;
+  }
+  .advances-list .list-group {
+    max-height: 300px;
   }
 }/*# sourceMappingURL=styles.css.map */

@@ -17,10 +17,6 @@
                     <i class="fas fa-store me-2"></i>
                     Control de Stock - Botica
                 </h1>
-                <div class="last-update animate-pulse">
-                    <i class="fas fa-clock me-1"></i>
-                    <span id="currentDateTime">10/02/2026 - 21:34 PM</span>
-                </div>
             </div>
         </div>
     </header>
@@ -41,8 +37,9 @@
                             <thead class="table-dark">
                                 <tr>
                                     <th class="text-start">Producto</th>
-                                    <th class="text-center">Stock</th>
+                                    <th class="text-center">Cantidad</th>
                                     <th class="text-center">Vendido</th>
+                                    <th class="text-center">Stock</th>
                                     <th class="text-center">P. Compra Unit.</th> 
                                     <th class="text-center">P. Compra Subtotal</th>      
                                     <th class="text-center">P. Venta Unit.</th>   
@@ -55,17 +52,17 @@
                             </tbody>
                             <tfoot class="table-secondary">
                                 <tr>
-                                    <td colspan="4" class="text-end fw-bold">Inversión Total:</td>
+                                    <td colspan="5" class="text-end fw-bold">Inversión Total:</td>
                                     <td id="totalInversion" class="text-center fw-bold text-primary">0.00</td>
                                     <td colspan="3"></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="6" class="text-end fw-bold">Total Ganancia Bruta:</td>
+                                    <td colspan="7" class="text-end fw-bold">Total Ganancia Bruta:</td>
                                     <td id="totalBruto" class="text-center fw-bold text-success">0.00</td>
                                     <td class="text-center">-</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="6" class="text-end fw-bold">Total Ganancia Neta:</td>
+                                    <td colspan="7" class="text-end fw-bold">Total Ganancia Neta:</td>
                                     <td class="text-center">-</td>
                                     <td id="totalNeto" class="text-center fw-bold text-success">0.00</td>
                                 </tr>
@@ -156,18 +153,17 @@
                         </div>
                         <div class="card-body">
                             <div class="advances-info">
-                                <div class="advances-summary mb-3">
-                                    <div class="summary-item">
-                                        <span class="label">Total Adelantos:</span>
-                                        <span id="totalFernandoAdvances" class="value text-danger fw-bold">S/. 0.00</span>
-                                    </div>
-                                    
-                                </div>
-                                
                                 <div class="advances-list">
                                     <h6 class="mb-2">Historial de Adelantos:</h6>
                                     <div id="advancesHistory" class="list-group small">
                                         <!-- Los adelantos se mostrarán aquí -->
+                                    </div>
+                                </div>
+
+                                <div class="advances-summary mt-3 mb-0">
+                                    <div class="summary-item">
+                                        <span class="label">Total Adelantos:</span>
+                                        <span id="totalFernandoAdvances" class="value text-danger fw-bold">S/. 0.00</span>
                                     </div>
                                 </div>
                             </div>

@@ -90,8 +90,9 @@ function calcularYMostrarTodo() {
         }
         row.innerHTML = `
             <td class="text-start">${producto.nombre}</td>
-            <td class="text-center">${stockActual}</td>
+            <td class="text-center">${producto.cantidad}</td>
             <td class="text-center">${producto.vendido}</td>
+            <td class="text-center">${stockActual}</td>
             <td class="text-center">S/. ${producto.precioCompra.toFixed(2)}</td>
             <td class="text-center">S/. ${subtotalCompra.toFixed(2)}</td>
             <td class="text-center">${producto.precioVenta > 0 ? 'S/. ' + producto.precioVenta.toFixed(2) : 'Por definir'}</td>
