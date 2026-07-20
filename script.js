@@ -54,6 +54,13 @@ let adelantosFernando = [
 // Función PRINCIPAL que calcula TODO
 function calcularYMostrarTodo() {
     console.log("Ejecutando cálculos...");
+
+    const setText = (id, value) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.textContent = value;
+        }
+    };
     
     let totalBruto = 0;
     let totalNeto = 0;
@@ -78,6 +85,9 @@ function calcularYMostrarTodo() {
 
         // Crear fila
         const row = document.createElement('tr');
+        if (stockActual === 0) {
+            row.classList.add('stock-empty');
+        }
         row.innerHTML = `
             <td class="text-start">${producto.nombre}</td>
             <td class="text-center">${stockActual}</td>
@@ -92,9 +102,9 @@ function calcularYMostrarTodo() {
     });
 
     // 2. MOSTRAR TOTALES EN TABLA PRINCIPAL
-    document.getElementById('totalBruto').textContent = totalBruto.toFixed(2);
-    document.getElementById('totalNeto').textContent = totalNeto.toFixed(2);
-    document.getElementById('totalInversion').textContent = totalInversion.toFixed(2);
+    setText('totalBruto', totalBruto.toFixed(2));
+    setText('totalNeto', totalNeto.toFixed(2));
+    setText('totalInversion', totalInversion.toFixed(2));
 
     // 3. CALCULAR DISTRIBUCIÓN (según tu explicación)
     // Yover recibe 40% de la ganancia NETA
@@ -114,25 +124,25 @@ function calcularYMostrarTodo() {
 
     // 4. MOSTRAR EN LA DISTRIBUCIÓN DE GANANCIAS (¡Aquí es donde quieres que se muestre!)
     // Sección Fernando
-    document.getElementById('fernandoBruto').textContent = `S/. ${totalBruto.toFixed(2)}`;
-    document.getElementById('fernandoMenosYover').textContent = `- S/. ${yoverRecibe.toFixed(2)}`;
-    document.getElementById('fernandoMenosAdelantos').textContent = `- S/. ${totalAdelantosFernando.toFixed(2)}`;
-    document.getElementById('fernandoTotal').textContent = `S/. ${fernandoFinal.toFixed(2)}`;
+    setText('fernandoBruto', `S/. ${totalBruto.toFixed(2)}`);
+    setText('fernandoMenosYover', `- S/. ${yoverRecibe.toFixed(2)}`);
+    setText('fernandoMenosAdelantos', `- S/. ${totalAdelantosFernando.toFixed(2)}`);
+    setText('fernandoTotal', `S/. ${fernandoFinal.toFixed(2)}`);
     
     // Sección Yover
-    document.getElementById('gananciaNetaTotal').textContent = `S/. ${totalNeto.toFixed(2)}`;
-    document.getElementById('yoverPorcentaje').textContent = `S/. ${yoverRecibe.toFixed(2)} (40%)`;
-    document.getElementById('yoverTotal').textContent = `S/. ${yoverRecibe.toFixed(2)}`;
+    setText('gananciaNetaTotal', `S/. ${totalNeto.toFixed(2)}`);
+    setText('yoverPorcentaje', `S/. ${yoverRecibe.toFixed(2)} (40%)`);
+    setText('yoverTotal', `S/. ${yoverRecibe.toFixed(2)}`);
     
     // 5. MOSTRAR EN CONTROL DE ADELANTOS
-    document.getElementById('totalFernandoAdvances').textContent = `S/. ${totalAdelantosFernando.toFixed(2)}`;
+    setText('totalFernandoAdvances', `S/. ${totalAdelantosFernando.toFixed(2)}`);
     
     // 6. MOSTRAR EN RESUMEN FINAL
-    document.getElementById('finalBruto').textContent = `S/. ${totalBruto.toFixed(2)}`;
-    document.getElementById('finalNeto').textContent = `S/. ${totalNeto.toFixed(2)}`;
-    document.getElementById('finalFernandoBalance').textContent = `S/. ${fernandoFinal.toFixed(2)}`;
-    document.getElementById('finalYoverBalance').textContent = `S/. ${yoverRecibe.toFixed(2)}`;
-    document.getElementById('totalADistribuir').textContent = `S/. ${totalADistribuir.toFixed(2)}`;
+    setText('finalBruto', `S/. ${totalBruto.toFixed(2)}`);
+    setText('finalNeto', `S/. ${totalNeto.toFixed(2)}`);
+    setText('finalFernandoBalance', `S/. ${fernandoFinal.toFixed(2)}`);
+    setText('finalYoverBalance', `S/. ${yoverRecibe.toFixed(2)}`);
+    setText('totalADistribuir', `S/. ${totalADistribuir.toFixed(2)}`);
     
     // 7. MOSTRAR LISTA DE ADELANTOS
     actualizarListaAdelantos();
@@ -206,14 +216,17 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('currentYear').textContent = new Date().getFullYear();
     
     // 4. Botón de actualizar (solo para forzar recalcular)
-    document.getElementById('refreshData').addEventListener('click', function() {
-        calcularYMostrarTodo();
-        actualizarFechaHora();
-        this.innerHTML = '<i class="fas fa-sync-alt fa-spin me-1"></i> Actualizando...';
-        setTimeout(() => {
-            this.innerHTML = '<i class="fas fa-sync-alt me-1"></i> Actualizar datos';
-        }, 1000);
-    });
+    const refreshButton = document.getElementById('refreshData');
+    if (refreshButton) {
+        refreshButton.addEventListener('click', function() {
+            calcularYMostrarTodo();
+            actualizarFechaHora();
+            this.innerHTML = '<i class="fas fa-sync-alt fa-spin me-1"></i> Actualizando...';
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-sync-alt me-1"></i> Actualizar datos';
+            }, 1000);
+        });
+    }
     
     console.log("Todo listo, cálculos mostrados en pantalla.");
 });
