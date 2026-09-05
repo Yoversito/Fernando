@@ -48,6 +48,7 @@ let adelantosFernando = [
     { monto: 120, fecha: "21/06/2026" },
     { monto: 250, fecha: "06/07/2026" },
     { monto: 100, fecha: "12/07/2026" },
+    { monto: 150, fecha: "30/08/2026" },
 ];
 
 
