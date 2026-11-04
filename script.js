@@ -50,6 +50,7 @@ let adelantosFernando = [
     { monto: 100, fecha: "12/07/2026" },
     { monto: 150, fecha: "30/08/2026" },
     { monto: 50, fecha: "14/09/2026" },
+    { monto: 100, fecha: "01/10/2026" },
 ];
 
 
@@ -73,7 +74,13 @@ function calcularYMostrarTodo() {
     tableBody.innerHTML = '';
 
     // 1. CALCULAR GANANCIAS DE PRODUCTOS (igual que antes)
-    productos.forEach((producto, index) => {
+    const productosOrdenados = [...productos].sort((a, b) => {
+        const stockA = a.cantidad - a.vendido;
+        const stockB = b.cantidad - b.vendido;
+        return (stockA === 0) - (stockB === 0);
+    });
+
+    productosOrdenados.forEach((producto, index) => {
         const stockActual = producto.cantidad - producto.vendido;
         const subtotalCompra = producto.precioCompra * producto.cantidad;
         const gananciaNeta = producto.vendido > 0 ? 
